@@ -1,0 +1,84 @@
+<view class="page">
+  <!-- 引入跑马灯效果 -->
+  <view class="example">
+    <view class="marquee_box">
+      <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px;font-size: {{size}}px;">
+        <image src="{{adUrl}}" class='ad-image' />{{text}}
+      </view>
+    </view>
+  </view>
+  <view class="leeTitle">每日数据</view>
+  <view class="lee-card" bindtap="voiceNum">
+    <!-- 数据 -->
+    <view class="miniCard">
+      <view>
+        {{count.confirmedCount}}
+        <view class="margin-top">
+          确诊
+        </view>
+      </view>
+      <view>
+        {{count.suspectedCount}}
+        <view class="margin-top">
+          疑似
+        </view>
+      </view>
+      <view>
+        {{count.deadCount}}
+        <view class="margin-top">
+          死亡
+        </view>
+      </view>
+      <view>
+        {{count.curedCount}}
+        <view class="margin-top">
+          治愈
+        </view>
+      </view>
+    </view>
+    <view class="kb" style="height:20rpx;"></view>
+    <view class="miniText">{{count.generalRemark}}</view>
+    <!-- 更新时间 -->
+    <view class="title margin-top">
+      更新时间：{{count.leeTime}}
+    </view>
+  </view>
+
+  <!-- 新闻列表 -->
+  <view class="leeTitle">新闻列表</view>
+  <view class="lee-card" wx:for="{{news}}" wx:key="index" data-item="{{item}}" bindtap="voiceNews" bindlongtap="goDetai">
+    <view class="title">
+      {{item.title}}
+    </view>
+    <view class="kb" style="height:20rpx;"></view>
+    <view class="miniText news">
+      {{item.summary}}
+    </view>
+    <view class="line">
+      <view class="fr">{{item.infoSource}}</view>
+      <view>{{item.pubDateStr}}</view>
+    </view>
+  </view>
+  <view class="lee-card" bindtap="noMore">
+    <view class="title">刷新新闻...</view>
+  </view>
+
+  <view class="leeTitle">关于病毒</view>
+  <view class="lee-card" bindtap="voiceAbout">
+    <view class="lee-block">
+      潜伏期：一般为 3～7 天，最长不超过 14 天，潜伏期内可能存在传染性，其中无症状病例传染性非常罕见
+    </view>
+    <view class="lee-block">
+      易感人群：人群普遍易感。老年人及有基础疾病者感染后病情较重，儿童及婴幼儿也有发病
+    </view>
+    <view class="lee-block">
+      宿主：野生动物，可能为中华菊头蝠
+    </view>
+  </view>
+  <view class="lee-card" bindtap="stop">
+    <view class="title" >回形针讲解视频</view>
+    <view class="line"></view>
+    <video style="width:100%" src="cloud://mum-9527.6d75-mum-9527-1301212775/v.f30.mp4"></video>
+  </view>
+  <view class="kb" style="height:120rpx;"></view>
+</view>

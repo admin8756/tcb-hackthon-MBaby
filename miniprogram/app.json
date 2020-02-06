@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundColor": "#f6f5f7",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6f5f7",
+    "navigationBarTitleText": "妈宝",
+    "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.3",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
