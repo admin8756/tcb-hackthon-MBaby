@@ -10,41 +10,69 @@
  * import std from "../../utils/std.js" 
  * 
  **/
+/* 云开发请求 */
 
+wx.vrequest = function(options) {
+  // 默认配置
+  const OPT = Object.assign({
+    method: 'GET',
+    // dataType: 'json',
+    responseType: 'text'
+  }, options);
+  // 默认header
+  OPT['header'] = Object.assign({
+    'Content-Type': 'application/json',
+    'UserAgent': 'github@guren-cloud/v-request 20181229'
+  }, options.header);
+
+  // 发送的数据
+  // 如果data是string,对应request模块的body（buffer、string）
+  // 如果是object，则为json，对应request模块的json
+  let POST_DATA = {
+    body: options.data
+  };
+  if (typeof options.data === 'object') POST_DATA['body'] = JSON.stringify(POST_DATA['body']);
+
+  // 开始请求
+  return new Promise((RES, REJ) => {
+
+  })
+}
 /* 静态类 */
 const host = "https://ncov-api.werty.cn:2021/"
 const plugin = requirePlugin("WechatSI")
 /* 请求封装 */
 function request(url, datas, type) {
   return new Promise((resolve, reject) => {
-    wx.request({
-      url: host + url,
-      data: datas || {},
-      method: type || 'GET',
-      header: {
-      	"Content-Type": "application/x-www-form-urlencoded"
+    wx.cloud.callFunction({
+      name: 'cloud',
+      data: {
+        options: Object.assign({
+          url: host + url,
+          method: type || 'GET',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+        }, datas)
       },
       success: res => {
-        console.log(url, res)
-        resolve(res);
-        // if (res.data.code == 0) resolve(res);
-        // else toast(res.data.msg)
+        let data = JSON.parse(res.result.body)
+        console.log(url, data)
+        resolve(data);
       },
-      fail: res => {
-        console.error(res.data)
-        reject(res.data);
-      },
-      error: e => {
-        return reject('网络出错');
+      fail: err => {
+        console.error(err.data)
+        reject(err.data);
       }
     })
   });
 }
-function Voice(e){
+
+function Voice(e) {
   plugin.textToSpeech({
     lang: 'zh_CN',
-    content: e||'没有找到内容',
-    success: resTrans => {      // 可以重新得到语音合成文件和过期时间
+    content: e || '没有找到内容',
+    success: resTrans => { // 可以重新得到语音合成文件和过期时间
       wx.playBackgroundAudio({
         dataUrl: resTrans.filename,
         title: '',
@@ -59,7 +87,7 @@ function updataBtn() {
   uni.showLoading({
     title: '更新中...'
   })
-  setTimeout(function () {
+  setTimeout(function() {
     uni.hideLoading()
     uni.showModal({
       title: '温馨提醒',
@@ -69,6 +97,7 @@ function updataBtn() {
     });
   }, sjs * 579);
 }
+
 /* 获取昨天的时间 */
 function getYesterdayDate() {
   let today = new Date();
@@ -95,49 +124,6 @@ function toast(e) {
     title: e || '错误',
     duration: 2000,
     icon: 'none'
-  })
-}
-
-/* 图片上传接口封装 ,自动返回图片上传好的地址.*/
-function upDataImage() {
-  return new Promise((resolve, reject) => {
-    if (uni.getStorageSync('token')) {
-      uni.chooseImage({
-        success: (chooseImageRes) => {
-          const tempFilePaths = chooseImageRes.tempFilePaths;
-          const uploadTask = uni.uploadFile({
-            url: host + 'common/upload',
-            filePath: tempFilePaths[0],
-            name: 'file',
-            formData: {},
-            success: (ress) => {
-              toast('上传成功')
-              resolve({
-                img: JSON.parse(ress.data).data.url,
-                url: chooseImageRes.tempFilePaths[0]
-              })
-            },
-            fail: (err) => {
-              toast('上传失败')
-              console.error(err)
-              reject: err
-            },
-          });
-          uploadTask.onProgressUpdate((ret) => {
-            console.log(ret)
-            // 测试条件，取消上传任务。
-            // if (ret.progress > 50) {
-            // 	uploadTask.abort();
-            // }
-          });
-        }
-      });
-    } else {
-      toast('您还没有登录')
-      reject({
-        data: '未登录!'
-      })
-    }
   })
 }
 
@@ -203,7 +189,7 @@ function setNavTitle(e) {
 
 /* 延迟3秒后退出 */
 function sellpBcak() {
-  setTimeout(function () {
+  setTimeout(function() {
     back()
   }, 3 * 579);
 }
@@ -284,7 +270,7 @@ function toMiniTime(e) {
 function tzWeb(e) {
   /* app的方法 */
   //#ifdef APP-PLUS
-  plus.runtime.openURL(e, function (res) {
+  plus.runtime.openURL(e, function(res) {
     console.log(res);
   });
   //#endif
@@ -320,7 +306,6 @@ export default {
   updataBtn,
   toTimes,
   Voice,
-  upDataImage,
   getTime,
   tzWeb,
   getYesterdayDate,

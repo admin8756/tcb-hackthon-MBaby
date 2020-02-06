@@ -12,6 +12,7 @@
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": true,
+		"uglifyFileName": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -20,7 +21,6 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"uglifyFileName": true,
 		"bundle": true
 	},
 	"appid": "wxc9f4dd46f1c7c080",
@@ -28,6 +28,7 @@
 	"libVersion": "2.10.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,

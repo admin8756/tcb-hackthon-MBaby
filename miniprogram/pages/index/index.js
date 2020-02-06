@@ -79,12 +79,11 @@ Page({
   /* 获取数据 */
   getData() {
     std.re('original/tx/').then(res => {
-      console.log(res.data.newslist[0])
-      let count = res.data.newslist[0].desc
+      let count = res.newslist[0].desc
       count.leeTime = std.toTimes(count.modifyTime)
       this.setData({
         count,
-        news: res.data.newslist[0].news
+        news: res.newslist[0].news
       })
     })
   },
