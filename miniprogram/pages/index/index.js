@@ -36,7 +36,7 @@ Page({
   voiceNews(e) {
     std.toast('播放中...')
     let item = e.currentTarget.dataset.item
-    let text = '正在为您播放，' + item.pubDateStr + '来自' + item.infoSource + '的新闻。' + item.title + '详细内容如下：' + item.summary
+    let text = '正在为您播放，' + item.pubDateStr + '来自' + item.infoSource + '的报道。' + item.title + '详细内容如下：' + item.summary
     this.toVoice(text)
   },
   noMore() {

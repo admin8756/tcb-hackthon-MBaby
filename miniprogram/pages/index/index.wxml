@@ -44,8 +44,8 @@
     </view>
   </view>
 
-  <!-- 新闻列表 -->
-  <view class="leeTitle">新闻列表</view>
+  <!-- 相关信息 -->
+  <view class="leeTitle">相关信息</view>
   <view class="lee-card" wx:for="{{news}}" wx:key="index" data-item="{{item}}" bindtap="voiceNews" bindlongtap="goDetai">
     <view class="title">
       {{item.title}}
@@ -60,7 +60,7 @@
     </view>
   </view>
   <view class="lee-card" bindtap="noMore">
-    <view class="title">刷新新闻...</view>
+    <view class="title">立即刷新...</view>
   </view>
 
   <view class="leeTitle">关于病毒</view>
@@ -76,7 +76,7 @@
     </view>
   </view>
   <view class="lee-card" bindtap="stop">
-    <view class="title" >回形针讲解视频</view>
+    <view class="title">回形针讲解视频</view>
     <view class="line"></view>
     <video style="width:100%" src="cloud://mum-9527.6d75-mum-9527-1301212775/v.f30.mp4"></video>
   </view>

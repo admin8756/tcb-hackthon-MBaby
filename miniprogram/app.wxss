@@ -1,1 +1,166 @@
-@import'/style/style.wxss';
+.marquee_box {
+  top: 0;
+  width: 100%;
+  position: fixed;
+  height: 120rpx;
+  line-height: 120rpx;
+  color: #333;
+  background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=576010313,3827208933&fm=26&gp=0.jpg);
+  background-size: 100% auto;
+}
+
+.marquee_text {
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.ad-image {
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 20rpx;
+  margin-top: 15rpx;
+}
+
+.example {
+  display: block;
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+
+page {
+  background: #f1f1f1;
+}
+
+.night {
+  background: #262626;
+}
+
+.light {
+  background: #f6f5f7;
+}
+
+.margin-top {
+  margin-top: 20rpx;
+}
+
+.miniText {
+  font-size: 28rpx;
+  text-indent: 2em;
+  line-height: 1.4;
+}
+
+.miniCard {
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  text-align: center;
+}
+
+.miniCard view {
+  flex: 1;
+  border-right: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.miniCard view:last-child {
+  border-right: none;
+}
+
+.lee-card {
+  margin: 30rpx;
+  padding: 30rpx;
+  border-radius: 10rpx;
+  color: #728c98;
+  background: #fdfdfd;
+  box-shadow: 2rem 2rem 8rem rgba(78, 134, 165, 0.09),
+                1rem 1rem 4rem rgba(78, 134, 165, 0.09),
+                inset 4rem 4rem 10rem rgba(78, 134, 165, 0.05);
+}
+
+.lee-card .title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.line {
+  margin-top: 10rpx;
+  padding-top: 20rpx;
+  border-top: 2rpx gainsboro dotted;
+}
+
+.news {
+  overflow: hidden;
+}
+
+.text-xl {
+  font-size: 30rpx;
+}
+
+.fr {
+  float: right;
+}
+
+.bg-red {
+  background: #b4211c;
+  color: #f6f5f7;
+}
+
+.kb {
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+}
+
+.bottom_btn {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  padding-bottom: 60rpx;
+  left: 0;
+  background: #888;
+  bottom: 0;
+  width: 100%;
+}
+
+.lee_btn {
+  position: relative;
+  border: 0rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  height: 64rpx;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  overflow: visible;
+  margin-left: initial;
+  transform: translate(0rpx, 0rpx);
+  margin-right: initial;
+}
+
+.lee_btn::after {
+  display: none;
+}
+
+.leeTitle {
+  padding: 2px 4px;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  font-style: normal;
+  font-size: 45rpx;
+  font-weight: bold;
+  width: 208rpx;
+  background: linear-gradient(transparent 60%, #61d4b3 40%);
+}
+
+.lee-block {
+  margin-top: 20rpx;
+  line-height: 1.3;
+}
