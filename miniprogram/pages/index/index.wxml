@@ -44,6 +44,19 @@
     </view>
   </view>
 
+  <view class="leeTitle">文字识别</view>
+  <view class="lee-card bg-red">
+    <image style="width:100%" mode="widthFix" wx:if="{{imgages}}" src="{{imgages}}"></image>
+    <view class="miniText" wx:if="{{words_result}}">{{words_result}}</view>
+    <view class="line" wx:if="{{imgages}}" />
+    <view bindtap="upImage" class="title margin-top">上传图片</view>
+  </view>
+
+  <view class="leeTitle">别人的字</view>
+  <view class="lee-card bg-orange" wx:if="{{copyData}}" id="{{copyData}}" bindtap="playCopy">
+    {{copyData}}
+  </view>
+
   <!-- 相关信息 -->
   <view class="leeTitle">相关信息</view>
   <view class="lee-card" wx:for="{{news}}" wx:key="index" data-item="{{item}}" bindtap="voiceNews" bindlongtap="goDetai">

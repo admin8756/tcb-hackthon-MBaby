@@ -7,7 +7,9 @@ Page({
     Lin: '',
     count: [],
     news: [],
+    imgages:'',
     text: '',
+    copyData: '小宝提醒您，您可以复制别人发的文字，点击这个按钮，即可语音播放',
     marqueePace: 5, //滚动速度
     marqueeDistance: 0, //初始滚动距离
     size: 40,
@@ -16,20 +18,35 @@ Page({
     adUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1580980135481&di=e9e221cd7969156d06e62f372693fc0a&imgtype=0&src=http%3A%2F%2Fwww.17qq.com%2Fimg_biaoqing%2F48248333.jpeg',
   },
   /* 加载 */
-  onLoad(options) {},
+  onLoad(options) {
+    let firstOpen = wx.getStorageSync('firstOpen')
+    if (!firstOpen) {
+      wx.setStorageSync('firstOpen', true)
+      this.toVoice('你好，我是小宝，我可以帮你了解每天疫情的情况。本页面的内容，点击可语音播放。')
+    } else {
+      this.toVoice('欢迎回来，本页面的内容，点击任何地方都可语音播放,点击红色按钮可识别照片里的文字。')
+    }
+  },
   /* 载入 */
   onReady() {
     this.getData()
   },
   /* 显示 */
   onShow() {
-    let firstOpen = wx.getStorageSync('firstOpen')
-    if (!firstOpen) {
-      wx.setStorageSync('firstOpen', true)
-      this.toVoice('你好，我是小宝，我可以帮你了解每天疫情的情况。本页面的内容，点击可语音播放。')
-    } else {
-      this.toVoice('欢迎回来，本页面的内容，点击任何地方都可语音播放。')
-    }
+    let that = this
+    wx.getClipboardData({
+      success(res) {
+        console.log(res.data)
+        if (res.data) {
+          that.toVoice('小宝检测到您刚才复制了一段话，点击黄色按钮可语音播放')
+          that.setData({
+            copyData: res.data
+          })
+        } else {
+          return false
+        }
+      }
+    })
   },
 
   /* 阅读新闻 */
@@ -78,7 +95,7 @@ Page({
   onShareAppMessage() {},
   /* 获取数据 */
   getData() {
-    std.re('original/tx/').then(res => {
+    std.re('https://ncov-api.werty.cn:2021/original/tx/').then(res => {
       let count = res.newslist[0].desc
       count.leeTime = std.toTimes(count.modifyTime)
       this.setData({
@@ -124,5 +141,77 @@ Page({
         that.runMarquee();
       }
     }, that.data.interval);
-  }
+  },
+  playCopy(e){
+    this.toVoice(e.target.id)
+  },
+  /* 云开发返回临时图片地址的方法,不管了，不存数据库了 */
+  upImage(e) {
+    let that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        if (res.tempFiles[0].size >= 4194304) {
+          let text = '您上传的文件太大了，请重新上传'
+          std.toast(text)
+          std.toVoice(text)
+          that.setData({
+            text
+          })
+          return false
+        } else {
+          wx.showLoading({
+            title: '上传中...',
+            mask: true,
+          })
+          let Suffix = /\.[^\.]+$/.exec(res.tempFiles[0].path);
+          let imgNmae = 'images/' + std.getTime() + '-' + std.randomNum(10000, 99999) + Suffix
+          wx.cloud.uploadFile({
+            cloudPath: imgNmae, // 上传至云端的路径
+            filePath: res.tempFiles[0].path, // 小程序临时文件路径
+            success: file => {
+              that.setData({
+                imgages:file.fileID
+              })
+              wx.cloud.callFunction({
+                name: 'token',
+                data: {
+                  fileID: file.fileID
+                }
+              }).then(res => {
+                wx.hideLoading()
+                let result = res.result.words_result;
+                if (result.length > 0) {
+                  let arr = '';
+                  for (let i = 0; i < result.length; i++) {
+                    arr += result[i].words+'。'
+                  }
+                  that.setData({
+                    words_result: arr
+                  })
+                  that.toVoice(arr)
+                } else {
+                  that.toVoice('没有识别到数据...请重新上传')
+                }
+                //删除图片
+                // wx.cloud.deleteFile({
+                //   fileList: [id]
+                // }).then(res => {
+                //   // handle success
+                // }).catch(error => {
+                //   // handle error
+                // })
+              }).catch(err => {
+                wx.hideLoading()
+                console.log(err)
+              });
+            },
+            fail: console.error
+          })
+        }
+      }
+    })
+  },
 })

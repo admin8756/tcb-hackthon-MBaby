@@ -109,6 +109,11 @@ page {
   color: #f6f5f7;
 }
 
+.bg-orange {
+  background: #f37b1d;
+  color: #f6f5f7;
+}
+
 .kb {
   width: 100%;
   height: 200rpx;

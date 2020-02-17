@@ -1,0 +1,11 @@
+{
+  "name": "token",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "baidu-aip-sdk": "^2.4.5",
+    "request": "^2.88.0",
+    "wx-server-sdk": "^1.8.0"
+  }
+}

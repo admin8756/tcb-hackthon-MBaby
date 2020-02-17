@@ -17,11 +17,13 @@ const plugin = requirePlugin("WechatSI")
 /* 请求封装 */
 function re(url, datas, type) {
   return new Promise((resolve, reject) => {
+    console.log(url, datas, type)
     wx.cloud.callFunction({
       name: 'cloud',
       data: {
         options: Object.assign({
-          url: host + url,
+          url: url,
+          // url: host + url,
           method: type || 'GET',
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -29,9 +31,8 @@ function re(url, datas, type) {
         }, datas)
       },
       success: res => {
-        let data = JSON.parse(res.result.body)
-        console.log(url, data)
-        resolve(data);
+        // let data = JSON.parse(res.result.body)
+        resolve(JSON.parse(res.result.body));
       },
       fail: err => {
         console.error(err.data)
@@ -80,6 +81,12 @@ function sellpBcak() {
   }, 3 * 579);
 }
 
+/* 云开发返回临时图片地址的方法 */
+
+function upImage() {
+
+}
+
 /* 输入时间戳,转日期时间*/
 function toTimes(e) {
   if (e < 1546272000000) {
@@ -102,9 +109,24 @@ function getTime() {
   return Date.parse(new Date());
 }
 
+function randomNum(minNum, maxNum) {
+  switch (arguments.length) {
+    case 1:
+      return parseInt(Math.random() * minNum + 1, 10);
+      break;
+    case 2:
+      return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+      break;
+    default:
+      return 0;
+      break;
+  }
+}
 export default {
   Voice,
   re,
+  randomNum,
+  upImage,
   toast,
   getTime,
   acc,
