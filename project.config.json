@@ -24,7 +24,7 @@
 		"bundle": true,
 		"nodeModules": true
 	},
-	"appid": "wx916556bf29fb7c6a",
+	"appid": "你的appid",
 	"projectname": "%E5%A6%88%E5%AE%9D",
 	"libVersion": "2.5.0",
 	"simulatorType": "wechat",

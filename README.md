@@ -9,9 +9,9 @@
 - 了解疫情并不只是年轻人的权利。中国加油，武汉加油
 
 ## 项目特点：
-- 精简·整个项目代码17kb。
+- 精简·整个项目代码30kb。
 - 简单·整个项目只有一个页面，一个操作
-- 易用·所有操作，只需要单击就可以实现大字幕和tts功能。
+- 易用·所有操作，只需要单击就可以实现大字幕和tts功能ocr功能。
 
 ## 依赖
 - 微信小程序云开发
@@ -46,6 +46,7 @@ Wechat:LUN8888888888888
 Email:leedaisen@hotmail.com
 
 ## 项目截图
-![项目截图1](https://images.gitee.com/uploads/images/2020/0207/145831_ae26828a_1791536.png "项目截图1")
-![项目截图2](https://images.gitee.com/uploads/images/2020/0207/145912_ffe30ae4_1791536.png "项目截图2")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0218/143040_2416e8bf_1791536.png "D_00IP8N~ZZ6)`TSAPS~%GV.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0218/143054_a2f1c38f_1791536.png "4SF){26QKFT5JYQ72OTNGSG.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0218/143106_4a829edf_1791536.png "CD6LIGYWG{X1{{P1B`~}{AA.png")
 ## 项目地址：[开源地址](https://gitee.com/leedaisen/tcb-hackthon-MBaby)

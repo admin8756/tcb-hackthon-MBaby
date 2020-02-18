@@ -16,6 +16,9 @@ const args = {
   SECRET_KEY:"********************************"
 }
 
+路径:/project.config.json
+配置你的appid
+
 路径:/miniprogram/app.js
 配置微信云开发环境ID
 wx.cloud.init({
@@ -27,6 +30,8 @@ wx.cloud.init({
 ### 然后在微信公众平台后台填加一个微信同声传译的插件
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0217/203515_c3f03382_1791536.png "屏幕截图.png")
 
-### 最后剩下的就交给命运，然后提交微信审核吧。
+
+
+### 导入项目，你就可以使用了。
 
 嘻嘻(*^__^*) 嘻嘻
