@@ -2,7 +2,7 @@
 	"miniprogramRoot": "miniprogram/",
 	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -21,11 +21,12 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"bundle": true
+		"bundle": true,
+		"nodeModules": true
 	},
-	"appid": "wxc9f4dd46f1c7c080",
+	"appid": "wx916556bf29fb7c6a",
 	"projectname": "%E5%A6%88%E5%AE%9D",
-	"libVersion": "2.10.0",
+	"libVersion": "2.5.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
@@ -57,12 +58,6 @@
 					"name": "db guide",
 					"pathName": "pages/databaseGuide/databaseGuide",
 					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "tts测试",
-					"pathName": "pages/tts/tts",
-					"scene": null
 				}
 			]
 		}

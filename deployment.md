@@ -7,7 +7,7 @@
 在储存里建立一个images的文件夹
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0217/200214_a33be369_1791536.png "屏幕截图.png")
 
-### 其次 你需要配置你的百度应用账号
+### 其次 你需要配置你的百度应用账号以及修改开发环境名
 路径：cloudfunctions/token/conf
 配置百度ocr的应用信息。
 const args = {
@@ -15,6 +15,14 @@ const args = {
   API_KEY:"***********************************",
   SECRET_KEY:"********************************"
 }
+
+路径:/miniprogram/app.js
+配置微信云开发环境ID
+wx.cloud.init({
+  env: '你的环境ID',
+  traceUser: true,
+})
+
 
 ### 然后在微信公众平台后台填加一个微信同声传译的插件
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0217/203515_c3f03382_1791536.png "屏幕截图.png")

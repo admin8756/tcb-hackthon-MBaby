@@ -3,7 +3,7 @@
   <view class="example">
     <view class="marquee_box">
       <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px;font-size: {{size}}px;">
-        <image src="{{adUrl}}" class='ad-image' />{{text}}
+        <image src="/images/baby.gif" class='ad-image' />{{text}}
       </view>
     </view>
   </view>
@@ -40,7 +40,7 @@
     <view class="miniText">{{count.generalRemark}}</view>
     <!-- 更新时间 -->
     <view class="title margin-top">
-      更新时间：{{count.leeTime}}
+      {{count.leeTime}}更新
     </view>
   </view>
 
@@ -88,10 +88,20 @@
       宿主：野生动物，可能为中华菊头蝠
     </view>
   </view>
-  <view class="lee-card" bindtap="stop">
+  <!-- <view class="lee-card" bindtap="stop">
     <view class="title">回形针讲解视频</view>
     <view class="line"></view>
     <video style="width:100%" src="cloud://mum-9527.6d75-mum-9527-1301212775/v.f30.mp4"></video>
+  </view> -->
+  
+  <view class="leeTitle">其他内容</view>
+  <view>
+    <view class="lee-card" bindtap="helpMe">
+    <view class="title">软件帮助</view>
+  </view>
+    <view class="lee-card">
+    <button open-type="share" class="title">分享软件</button>
+  </view>
   </view>
   <view class="kb" style="height:120rpx;"></view>
 </view>

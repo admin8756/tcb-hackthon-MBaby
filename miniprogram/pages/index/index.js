@@ -15,7 +15,6 @@ Page({
     size: 40,
     orientation: 'left', //滚动方向
     interval: 50, // 时间间隔
-    adUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1580980135481&di=e9e221cd7969156d06e62f372693fc0a&imgtype=0&src=http%3A%2F%2Fwww.17qq.com%2Fimg_biaoqing%2F48248333.jpeg',
   },
   /* 加载 */
   onLoad(options) {
@@ -36,7 +35,6 @@ Page({
     let that = this
     wx.getClipboardData({
       success(res) {
-        console.log(res.data)
         if (res.data) {
           that.toVoice('小宝检测到您刚才复制了一段话，点击黄色按钮可语音播放')
           that.setData({
@@ -92,7 +90,20 @@ Page({
   /* 触底 */
   onReachBottom() {},
   /* 分享 */
-  onShareAppMessage() {},
+  onShareAppMessage() {
+    return {
+      title: '老年人都需要的小工具',
+      path: '/pages/index/index'
+    }
+  },
+  /* 软件帮助 */
+  helpMe(){
+    this.toVoice('只要点击任何地方都可以语音播报，红色按钮可以识别图片里的字， 遇到看不懂的字，复制到软件里。点击黄色按钮就可以直接播放了，爱你呦..')
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
+    })
+  },
   /* 获取数据 */
   getData() {
     std.re('https://ncov-api.werty.cn:2021/original/tx/').then(res => {

@@ -14,7 +14,11 @@
 /* 静态类 */
 const host = "https://ncov-api.werty.cn:2021/"
 const plugin = requirePlugin("WechatSI")
-/* 请求封装 */
+/* 请求封装
+ 传入url完整链接
+ datas为数据对象，不传默认为空
+ type为请求的方式，分为GET POST PUT 不传默认未GET请求
+ 返回请求后的实例结果*/
 function re(url, datas, type) {
   return new Promise((resolve, reject) => {
     console.log(url, datas, type)
@@ -41,7 +45,7 @@ function re(url, datas, type) {
     })
   });
 }
-
+/* 调用同声传译插件的接口，自动播放声音 */
 function Voice(e) {
   plugin.textToSpeech({
     lang: 'zh_CN',
@@ -55,7 +59,7 @@ function Voice(e) {
   })
 
 }
-
+/* 显示一个弹窗，因为原生的弹窗需要配置很多东西 */
 function toast(e) {
   wx.showToast({
     title: e || '错误',
@@ -81,12 +85,6 @@ function sellpBcak() {
   }, 3 * 579);
 }
 
-/* 云开发返回临时图片地址的方法 */
-
-function upImage() {
-
-}
-
 /* 输入时间戳,转日期时间*/
 function toTimes(e) {
   if (e < 1546272000000) {
@@ -104,11 +102,15 @@ function toTimes(e) {
   return y + "年" + m + "月" + d + '日' + h + '时' + mm + '分';
 }
 
-/* 获取时间戳*/
+/* 获取时间戳
+不需要传入参数。
+返回现在的时间戳，
+改造一下可以变为时间转时间转时间戳
+*/
 function getTime() {
   return Date.parse(new Date());
 }
-
+/* 产生一个随机数，传最大值和最小值，返回一个随机数  */
 function randomNum(minNum, maxNum) {
   switch (arguments.length) {
     case 1:
@@ -126,7 +128,6 @@ export default {
   Voice,
   re,
   randomNum,
-  upImage,
   toast,
   getTime,
   acc,
