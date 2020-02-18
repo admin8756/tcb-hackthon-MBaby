@@ -36,7 +36,7 @@
 如果您想贡献代码，可以阅读[contributing.md](https://gitee.com/leedaisen/tcb-hackthon-MBaby/blob/mp/contributing.md)
 
 ## LICENSE
-了解开源协议，可以查看[LICENSE](https://gitee.com/leedaisen/tcb-hackthon-MBaby/blob/mp/LICENSE)
+了解开源协议，可以查看[Apache-2.0](https://gitee.com/leedaisen/tcb-hackthon-MBaby/blob/mp/LICENSE)
 
 ## 更新日志
 希望查看更新日志：[changelog.md](https://gitee.com/leedaisen/tcb-hackthon-MBaby/blob/mp/changelog.md)
