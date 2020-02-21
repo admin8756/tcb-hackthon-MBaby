@@ -9,7 +9,6 @@
   </view>
   <view class="leeTitle">每日数据</view>
   <view class="lee-card" bindtap="voiceNum">
-    <!-- 数据 -->
     <view class="miniCard">
       <view>
         {{count.confirmedCount}}
@@ -38,7 +37,6 @@
     </view>
     <view class="kb" style="height:20rpx;"></view>
     <view class="miniText">{{count.generalRemark}}</view>
-    <!-- 更新时间 -->
     <view class="title margin-top">
       {{count.leeTime}}更新
     </view>
@@ -49,31 +47,41 @@
     <image style="width:100%" mode="widthFix" wx:if="{{imgages}}" src="{{imgages}}"></image>
     <view class="miniText" wx:if="{{words_result}}">{{words_result}}</view>
     <view class="line" wx:if="{{imgages}}" />
-    <view bindtap="upImage" class="title margin-top">上传图片</view>
+    <!-- 微服务的方法 -->
+    <view bindtap="wxUpImages" class="title margin-top">上传图片</view>
+    <!-- 百度云的方法 -->
+    <!-- <view bindtap="upImage" class="title margin-top">上传图片</view> -->
   </view>
 
   <view class="leeTitle">别人的字</view>
   <view class="lee-card bg-orange" wx:if="{{copyData}}" id="{{copyData}}" bindtap="playCopy">
     {{copyData}}
   </view>
-
+  <view class="leeTitle">谣言鉴定</view>
+  <view class="lee-card bg-black" wx:if="{{copyData}}" id="{{copyData}}" catchtouchstart="streamRecord" catchtouchend="endStreamRecord" bindtap="playRumor">
+    {{currentText}}
+  </view>
   <!-- 相关信息 -->
-  <view class="leeTitle">相关信息</view>
-  <view class="lee-card" wx:for="{{news}}" wx:key="index" data-item="{{item}}" bindtap="voiceNews" bindlongtap="goDetai">
+  <view class="leeTitle">谣言列表</view>
+  <view class="lee-card" wx:for="{{newsList}}" wx:key="index" data-item="{{item}}" bindtap="voiceNews">
     <view class="title">
       {{item.title}}
     </view>
     <view class="kb" style="height:20rpx;"></view>
     <view class="miniText news">
-      {{item.summary}}
+      {{item.desc}}
     </view>
+    <text class="abs text-red">{{item.explain}}</text>
+    <image mode="widthFix" class="margin-top-sm" style="width:100%;" src="{{item.imgsrc}}">
+
+    </image>
     <view class="line">
-      <view class="fr">{{item.infoSource}}</view>
-      <view>{{item.pubDateStr}}</view>
+      <view class="fr">{{item.date}}</view>
+      <view>{{item.author}}</view>
     </view>
   </view>
-  <view class="lee-card" bindtap="noMore">
-    <view class="title">立即刷新...</view>
+  <view class="lee-card" bindtap="More">
+    <view class="title">下一页</view>
   </view>
 
   <view class="leeTitle">关于病毒</view>
@@ -93,15 +101,15 @@
     <view class="line"></view>
     <video style="width:100%" src="cloud://mum-9527.6d75-mum-9527-1301212775/v.f30.mp4"></video>
   </view> -->
-  
+
   <view class="leeTitle">其他内容</view>
   <view>
     <view class="lee-card" bindtap="helpMe">
-    <view class="title">软件帮助</view>
-  </view>
+      <view class="title">软件帮助</view>
+    </view>
     <view class="lee-card">
-    <button open-type="share" class="title">分享软件</button>
-  </view>
+      <button open-type="share" class="title">分享软件</button>
+    </view>
   </view>
   <view class="kb" style="height:120rpx;"></view>
 </view>

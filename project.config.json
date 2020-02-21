@@ -9,6 +9,7 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": true,
@@ -21,12 +22,11 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"bundle": true,
-		"nodeModules": true
+		"bundle": true
 	},
-	"appid": "你的appid",
+	"appid": "wxc9f4dd46f1c7c080",
 	"projectname": "%E5%A6%88%E5%AE%9D",
-	"libVersion": "2.5.0",
+	"libVersion": "2.9.4",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

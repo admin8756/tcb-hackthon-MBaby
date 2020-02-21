@@ -5,7 +5,7 @@ App({
     } else {
       /* 这里填入您的 */
       wx.cloud.init({
-        env: 'sellp-9527',
+        env: 'mum-9527',
         traceUser: true,
       })
     }

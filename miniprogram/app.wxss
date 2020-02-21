@@ -5,10 +5,13 @@
   height: 120rpx;
   line-height: 120rpx;
   color: #333;
+  z-index: 9;
   background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=576010313,3827208933&fm=26&gp=0.jpg);
   background-size: 100% auto;
 }
-
+.margin-top-sm{
+  margin-top: 10rpx;
+}
 .marquee_text {
   white-space: nowrap;
   position: absolute;
@@ -30,11 +33,22 @@
   height: 120rpx;
   line-height: 120rpx;
 }
-
+.text-red{
+  color: #b4211c;
+}
 page {
   background: #f1f1f1;
 }
-
+.abs{
+  position: absolute;
+  right: 80rpx;
+  padding: 10rpx;
+  border: 4rpx solid;
+  border-radius: 8rpx;
+  margin-top: 30rpx;
+  font-size: 60rpx;
+  font-weight: bold;
+}
 .night {
   background: #262626;
 }
@@ -111,6 +125,10 @@ page {
 
 .bg-orange {
   background: #f37b1d;
+  color: #f6f5f7;
+}
+.bg-black {
+  background: #666;
   color: #f6f5f7;
 }
 

@@ -1,4 +1,5 @@
 {
+  "servicemarket": true,
   "pages": [
     "pages/index/index"
   ], 

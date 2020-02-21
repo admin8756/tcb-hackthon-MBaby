@@ -21,13 +21,11 @@ const plugin = requirePlugin("WechatSI")
  返回请求后的实例结果*/
 function re(url, datas, type) {
   return new Promise((resolve, reject) => {
-    console.log(url, datas, type)
     wx.cloud.callFunction({
       name: 'cloud',
       data: {
         options: Object.assign({
           url: url,
-          // url: host + url,
           method: type || 'GET',
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -35,12 +33,12 @@ function re(url, datas, type) {
         }, datas)
       },
       success: res => {
-        // let data = JSON.parse(res.result.body)
+        console.log(res.result)
         resolve(JSON.parse(res.result.body));
       },
       fail: err => {
-        console.error(err.data)
-        reject(err.data);
+        console.error(err)
+        reject(err);
       }
     })
   });
