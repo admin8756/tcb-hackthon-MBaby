@@ -48,7 +48,7 @@
 ## 联系方式
 
 有任何问题，可以通过下方的联系方式联系我。
-  · Wechat:LUN8888888888888 
+  · Wechat:Yay_ls 
 
   · Email:leedaisen@hotmail.com
 
