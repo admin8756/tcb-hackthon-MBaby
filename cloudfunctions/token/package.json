@@ -6,6 +6,6 @@
   "dependencies": {
     "baidu-aip-sdk": "^2.4.5",
     "request": "^2.88.0",
-    "wx-server-sdk": "^1.8.0"
+    "wx-server-sdk": "^2.7.2"
   }
 }
